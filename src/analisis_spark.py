@@ -20,7 +20,7 @@ def ejecutar_spark():
 
     print("\n--- 2. Cargando datasets distribuidos en PySpark ---")
     
-    # 2.1 Cargar masculinos con selección y casteo seguro
+    # 2.1 Cargar masculinos
     df_male_raw = spark.read.csv(f"{DATA_DIR}/male_players.csv", header=True, inferSchema=True)
     df_male = df_male_raw.select(
         col("fifa_version").cast("int"),
@@ -43,7 +43,7 @@ def ejecutar_spark():
         col("physic").cast("int")
     )
 
-    # 2.2 Cargar femeninos con selección y casteo seguro
+    # 2.2 Cargar femeninos
     df_female_raw = spark.read.csv(f"{DATA_DIR}/female_players.csv", header=True, inferSchema=True)
     df_female = df_female_raw.select(
         col("fifa_version").cast("int"),
@@ -66,7 +66,6 @@ def ejecutar_spark():
         col("physic").cast("int")
     )
 
-    # 2.3 Unir datasets
     df_spark = df_male.unionByName(df_female)
 
     print("Limpiando nulos y estandarizando campos...")

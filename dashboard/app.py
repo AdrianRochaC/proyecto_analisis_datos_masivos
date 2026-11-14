@@ -10,9 +10,8 @@ st.set_page_config(
     initial_sidebar_state="expanded",
 )
 
-# Paleta ejecutiva unificada (estilo Power BI Dark)
-COLOR_MALE = "#00D4FF"      # Cian brillante
-COLOR_FEMALE = "#FF4B4B"    # Coral vibrante
+COLOR_MALE = "#00D4FF"
+COLOR_FEMALE = "#FF4B4B"
 PALETA_GENERO = {"Male": COLOR_MALE, "Female": COLOR_FEMALE}
 
 st.markdown(

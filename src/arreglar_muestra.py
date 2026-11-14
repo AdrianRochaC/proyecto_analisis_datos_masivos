@@ -7,7 +7,6 @@ def extraer_multianual(ruta, genero, muestras_por_anio=1200):
     acumulado = []
     conteo_anios = {}
     
-    # Leer por bloques de 25.000 filas para mantener bajo consumo de memoria
     for chunk in pd.read_csv(ruta, usecols=cols, chunksize=25000, low_memory=False):
         chunk['fifa_version'] = pd.to_numeric(chunk['fifa_version'], errors='coerce')
         chunk = chunk.dropna(subset=['fifa_version'])
