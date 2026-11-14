@@ -1,4 +1,4 @@
-# ⚽ Telemetría y Análisis Multianual de Rendimiento Deportivo y Brecha Económica en EA Sports FIFA (15–23)
+# Telemetría y Análisis Multianual de Rendimiento Deportivo y Brecha Económica en EA Sports FIFA (15–23)
 
 **Proyecto Final · Análisis de Datos Masivos (Big Data)**  
 **Autor:** Adrián Rocha  
@@ -7,7 +7,7 @@
 
 ---
 
-## 📋 1. Descripción del Proyecto
+## 1. Descripción del Proyecto
 
 Este repositorio contiene la arquitectura distribuida, contenerizada y reproducible para la ingesta, limpieza, agregación analítica y visualización interactiva de más de **un millón de registros** históricos del fútbol profesional masculino y femenino (ediciones FIFA 15 a 23).
 
@@ -19,7 +19,7 @@ El sistema resuelve cuellos de botella de memoria y problemas de esquemas hetero
 
 ---
 
-## 🏗️ 2. Arquitectura de la Solución
+## 2. Arquitectura de la Solución
 
 ```mermaid
 flowchart TD
@@ -67,7 +67,7 @@ flowchart TD
 
 ---
 
-## 📁 3. Estructura del Repositorio
+## 3. Estructura del Repositorio
 
 ```text
 analisis_proyecto_adrian_rocha/
@@ -97,7 +97,7 @@ analisis_proyecto_adrian_rocha/
 
 ---
 
-## ⚙️ 4. Requisitos Previos
+## 4. Requisitos Previos
 
 1. **Docker Engine y Docker Compose:**
    - [Docker Desktop](https://www.docker.com/products/docker-desktop/) (Windows / macOS) o Docker Engine + Compose plugin (Linux).
@@ -110,7 +110,7 @@ analisis_proyecto_adrian_rocha/
 
 ---
 
-## 🔐 5. Configuración de Variables de Entorno (`.env`)
+## 5. Configuración de Variables de Entorno (`.env`)
 
 Para evitar "quemar" credenciales en el código y garantizar la seguridad del proyecto, se utiliza un archivo `.env`.
 
@@ -144,7 +144,7 @@ Para evitar "quemar" credenciales en el código y garantizar la seguridad del pr
 
 ---
 
-## 🚀 6. Guía de Ejecución Paso a Paso
+## 6. Guía de Ejecución Paso a Paso
 
 ### Paso 1: Levantar los contenedores en segundo plano
 Construye la imagen personalizada de PySpark, crea la red virtual `red_datos` y los volúmenes de persistencia:
@@ -206,7 +206,7 @@ docker exec -it app_spark streamlit run /app/dashboard/app.py --server.port=8501
 
 ---
 
-## 🌐 7. Acceso a los Servicios Web
+## 7. Acceso a los Servicios Web
 
 Una vez completados los pasos anteriores, acceda desde su navegador web:
 
@@ -218,7 +218,7 @@ Una vez completados los pasos anteriores, acceda desde su navegador web:
 
 ---
 
-## 📊 8. Detalle del Dashboard Ejecutivo (Streamlit + Plotly)
+## 8. Detalle del Dashboard Ejecutivo (Streamlit + Plotly)
 
 El dashboard cuenta con filtros dinámicos laterales (por **Temporada**, **Género** y **Posición**) y presenta:
 
@@ -238,7 +238,7 @@ El dashboard cuenta con filtros dinámicos laterales (por **Temporada**, **Géne
 
 ---
 
-## 🛠️ 9. Comandos Útiles y Solución de Problemas
+## 9. Comandos Útiles y Solución de Problemas
 
 - **Reiniciar el contenedor de Spark/Streamlit (liberar memoria RAM):**
   ```bash
@@ -259,7 +259,7 @@ El dashboard cuenta con filtros dinámicos laterales (por **Temporada**, **Géne
 
 ---
 
-## 📑 10. Referencias Técnicas
+## 10. Referencias Técnicas
 - **Apache Spark Documentation (PySpark 3.5):** [https://spark.apache.org/docs/latest/api/python/](https://spark.apache.org/docs/latest/api/python/)
 - **Docker & Docker Compose Reference:** [https://docs.docker.com/compose/](https://docs.docker.com/compose/)
 - **MongoDB Manual & Aggregation Pipeline:** [https://www.mongodb.com/docs/manual/](https://www.mongodb.com/docs/manual/)
