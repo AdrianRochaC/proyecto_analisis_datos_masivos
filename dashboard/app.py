@@ -31,9 +31,20 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
-PATH_EVOLUCION = "/app/data/procesados/evolucion_temporal.csv"
-PATH_LIGAS = "/app/data/procesados/top_ligas.csv"
-PATH_MUESTRA = "/app/data/procesados/muestra_distribucion.csv"
+def obtener_ruta(nombre_archivo):
+    # 1. Ruta dentro del contenedor Docker
+    if os.path.exists(f"/app/data/procesados/{nombre_archivo}"):
+        return f"/app/data/procesados/{nombre_archivo}"
+    # 2. Ruta en Streamlit Cloud o ejecución local
+    ruta_relativa = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "data", "procesados", nombre_archivo))
+    if os.path.exists(ruta_relativa):
+        return ruta_relativa
+    # 3. Ruta directa desde la raíz de trabajo
+    return os.path.join("data", "procesados", nombre_archivo)
+
+PATH_EVOLUCION = obtener_ruta("evolucion_temporal.csv")
+PATH_LIGAS = obtener_ruta("top_ligas.csv")
+PATH_MUESTRA = obtener_ruta("muestra_distribucion.csv")
 
 if not os.path.exists(PATH_MUESTRA):
     st.error("No se encontró el archivo de muestra.")
