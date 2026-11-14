@@ -1,0 +1,64 @@
+version: '3.8'
+
+services:
+  mongodb:
+    image: mongo:4.4
+    container_name: bd_mongodb
+    restart: always
+    ports:
+      - "${MONGO_PORT:-27017}:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME:-admin}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD:-password123}
+    volumes:
+      - mongo_data:/data/db
+    networks:
+      - red_datos
+
+  mongo-express:
+    image: mongo-express:latest
+    container_name: bd_mongo_express
+    restart: always
+    ports:
+      - "${MONGO_EXPRESS_PORT:-8081}:8081"
+    environment:
+      ME_CONFIG_MONGODB_URL: mongodb://${MONGO_INITDB_ROOT_USERNAME:-admin}:${MONGO_INITDB_ROOT_PASSWORD:-password123}@mongodb:27017/admin?authSource=admin
+      ME_CONFIG_BASICAUTH: "false"
+    depends_on:
+      - mongodb
+    networks:
+      - red_datos
+
+  procesamiento_spark:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    container_name: app_spark
+    tty: true
+    stdin_open: true
+    ports:
+      - "${STREAMLIT_PORT:-8501}:8501"
+    environment:
+      - MONGO_HOST=mongodb
+      - MONGO_PORT=27017
+      - MONGO_INITDB_ROOT_USERNAME=${MONGO_INITDB_ROOT_USERNAME:-admin}
+      - MONGO_INITDB_ROOT_PASSWORD=${MONGO_INITDB_ROOT_PASSWORD:-password123}
+      - MONGO_DB_NAME=${MONGO_DB_NAME:-fifa_analytics_db}
+      - MONGO_COLLECTION=${MONGO_COLLECTION:-jugadores}
+    volumes:
+      - ./data:/app/data
+      - ./src:/app/src
+      - ./dashboard:/app/dashboard
+    working_dir: /app
+    depends_on:
+      - mongodb
+    networks:
+      - red_datos
+
+networks:
+  red_datos:
+    driver: bridge
+
+volumes:
+  mongo_data:
+    driver: local

@@ -1,0 +1,57 @@
+# Variables de entorno con credenciales sensibles
+.env
+!.env.example
+
+# Archivos de datos crudos masivos (>100MB superan el límite de GitHub)
+data/male_players.csv
+data/female_players.csv
+*.csv.zip
+*.tar.gz
+
+# Mantener la carpeta de datos procesados (archivos ligeros para visualización)
+!data/procesados/
+!data/procesados/*.csv
+
+# Python y entornos virtuales
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+.env/
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Logs y volcados de memoria
+*.log
+*.sqlite
+
+# Carpetas de IDEs y editores
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Archivos de sistema operativo
+.DS_Store
+Thumbs.db
+desktop.ini
+
