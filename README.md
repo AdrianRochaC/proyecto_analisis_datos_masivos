@@ -4,7 +4,7 @@
 **Autor:** Adrián Rocha  
 **Fecha:** Noviembre de 2026  
 **Stack Tecnológico:** Docker · Docker Compose · MongoDB 4.4 · Mongo Express · Apache Spark 3.5 (PySpark) · Streamlit · Plotly Express
-
+**Dashboard Interactivo Depslegado en la Nube de Streamlit (Streamlit Community Cloud)** https://fifa-analytics-rocha.streamlit.app/
 ---
 
 ## 1. Descripción del Proyecto
